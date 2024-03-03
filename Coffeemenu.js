@@ -1,4 +1,4 @@
-// Types of coffee drinks
+// Class for parent of coffee drinks
 class Drink {
     constructor(drink){
         this.drink = drink;
@@ -9,7 +9,7 @@ class Drink {
     
   }
 
-
+// Class for Mocha and extends from the Drink Class
 class Mocha extends Drink {
     constructor(drink,flavor){
         super(drink);
@@ -18,7 +18,7 @@ class Mocha extends Drink {
     }
 }
 
-
+// Class for Coffee and extends from the Drink Class
 class Coffee extends Drink {
     constructor (drink, flavor) {
         super(drink);
@@ -26,7 +26,7 @@ class Coffee extends Drink {
        
     }
 }
-
+// Class for Espresso and extends from the Drink Class
 class Espresso extends Drink {
     constructor(drink, flavor) {
         super(drink);
@@ -38,13 +38,13 @@ class Espresso extends Drink {
 // let espressoDrink = new Espresso ('Espresso','Bold');
 // let coffeeDrinnk = new Coffee ('Coffee','Excelsa Beans');
 
-
+//  Class Menu with this. drinksArray = to an empty array
 class Menu {
     constructor(){
         this.drinksArray = [];
       
 }
-
+// Switch case for the Main Menu if the user inserts 1 then this. selectDrinks is called
 start(){
     let selection = this.showMainMenuOptions();
     while (selection != 0) {
@@ -66,7 +66,8 @@ start(){
             alert('Goodbye!')
         }
 
-
+// showMainMenuOptions Method   Returns the prompt for the user to see thier options 
+// for selecting the main options.
         showMainMenuOptions(){
             return prompt(`
             COFFEE HOUSE
@@ -76,7 +77,7 @@ start(){
             0) Exit
             `);
         }
-
+// showDrinkMenuOptions  Method returns Prompt for the user to see if they chose 1 for MainMenuOptions
         showDrinkMenuOptions() {
             return prompt(` 
             1) Coffee
@@ -85,7 +86,7 @@ start(){
             0) Back
             `);
         }
-    
+    // Method selectDrinks switch for the user to select what drink and this will push below to the array.
         selectDrinks(){
         let selection1 = this.showDrinkMenuOptions();
         while (selection1 != 0) {
@@ -129,7 +130,8 @@ start(){
 
                   this.drinksArray.push(Espresso);
             }
-            
+            // Method youOrder allows the user to see thier choices because it will
+            // add them to the array drinksArray with the loop.
             youOrder(){
                 // prompt(`${this.drinksArray[i]}`);
             // let orderString = '';
@@ -137,23 +139,25 @@ start(){
             //     prompt(`${this.drinksArray}`) + '\n';
 
             // }
-            let teamString = '';
+//  
+            let drinkString = '';
             for (let i = 0; i < this.drinksArray.length; i++) {
-            teamString += i+ ') ' + this.drinksArray[i].name + '\n';
+            drinkString += i+ ') ' + this.drinksArray[i].name + '\n';
             }
-            alert(teamString);
+            alert(drinkString);
         }
-              
+            //   Method drinkString to allow the user to delete thier choice and remove it from
+            // the array. Using the splice method
             deleteItem (){
                
                 // prompt(`${this.drinksArray[i]}`); 
-                let teamString = '';
+                let drinkString = '';
             for (let i = 0; i < this.drinksArray.length; i++) {
-            teamString += i+ ') ' + this.drinksArray[i].name + '\n';
+            drinkString += i+ ') ' + this.drinksArray[i].name + '\n';
             }
             
 
-                let index = prompt(`${teamString} \nEnter the number you would like to remove.`);
+                let index = prompt(`${drinkString} \nEnter the number you would like to remove.`);
                 if (index > -1 && index < this.drinksArray.length) {
                     this.drinksArray.splice(index,1);
                 }
